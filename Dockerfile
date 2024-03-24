@@ -31,9 +31,11 @@ RUN chmod +x entrypoint.sh
 
 RUN dart pub get
 
+RUN sudo ufw allow 30814/tcp && \
+    sudo ufw reload
+
 # Expose port 30814 for your other application
 EXPOSE 30814
 
 # Set entrypoint
-# ENTRYPOINT ["dart", "run", "./bin/beammp_discord_bot.dart"]
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT ["dart", "run", "./bin/beammp_discord_bot.dart"]
