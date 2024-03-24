@@ -3,15 +3,20 @@ FROM ubuntu:latest
 # Update package lists and install liblua5.3
 RUN apt-get update && \
     apt-get install -y liblua5.3 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get clean &&
+
+# GPG and WGET
+RUN apt-get install gpg && \
+    apt-get install wget
 
 # Install dart
-RUN apt-get update && apt-get install apt-transport-https && \
+RUN apt-get install apt-transport-https && \
     wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg  --dearmor -o /usr/share/keyrings/dart.gpg && \
     echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | tee /etc/apt/sources.list.d/dart_stable.list && \
     apt-get update && apt-get install dart
 
+
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set the working directory
 WORKDIR /home/beammpserver
