@@ -27,6 +27,7 @@ COPY . .
 # RUN wget -O BeamMP-Server your_direct_download_link
 # Make the server executable
 RUN chmod +x BeamMP-Server
+RUN chmod +x entrypoint.sh
 
 RUN dart pub get
 
