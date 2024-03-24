@@ -20,8 +20,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set the working directory
 WORKDIR /home/beammpserver
-# At this point, you need to have the BeamMP-Server file inside the Docker context and copy it into the image.
-# If you have a direct download link, you could use `wget` to download it instead of the COPY command.
+
 COPY * /home/beammpserver/
 
 # OR, for an example with wget (replace `your_direct_download_link` with the actual URL):
@@ -29,8 +28,10 @@ COPY * /home/beammpserver/
 # Make the server executable
 RUN chmod +x BeamMP-Server
 
+RUN dart pub get
+
 # Expose port 30814 for your other application
 EXPOSE 30814
 
 # Set entrypoint
-ENTRYPOINT ["dart", "run", "./bin/beammp_discord_bot.dart"]
+ENTRYPOINT ["dart", "run", "/home/beammpserver/bin/beammp_discord_bot.dart"]
