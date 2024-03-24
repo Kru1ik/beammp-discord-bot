@@ -21,7 +21,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Set the working directory
 WORKDIR /home/beammpserver
 
-COPY * /home/beammpserver/
+COPY . .
 
 # OR, for an example with wget (replace `your_direct_download_link` with the actual URL):
 # RUN wget -O BeamMP-Server your_direct_download_link
@@ -34,4 +34,4 @@ RUN dart pub get
 EXPOSE 30814
 
 # Set entrypoint
-ENTRYPOINT ["dart", "run", "/home/beammpserver/bin/beammp_discord_bot.dart"]
+ENTRYPOINT ["dart", "run", "./bin/beammp_discord_bot.dart"]
