@@ -35,4 +35,4 @@ EXPOSE 30814
 
 # Set entrypoint
 # ENTRYPOINT ["dart", "run", "./bin/beammp_discord_bot.dart"]
-ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
