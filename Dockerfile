@@ -3,7 +3,7 @@ FROM ubuntu:latest
 # Update package lists and install liblua5.3
 RUN apt-get update && \
     apt-get install -y liblua5.3 && \
-    apt-get clean &&
+    apt-get clean
 
 # GPG and WGET
 RUN apt-get install gpg && \
